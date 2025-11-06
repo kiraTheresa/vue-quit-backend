@@ -1,27 +1,25 @@
 <template>
-  <div>
-    <el-card>
-      <template #header>
-        <span>题目管理</span>
-      </template>
+  <el-card>
+    <template #header>
+      <span>题目管理</span>
+    </template>
 
-      <el-table :data="pagedData" border style="width: 100%">
-        <el-table-column prop="id" label="题目ID" width="80" />
-        <el-table-column prop="title" label="题目标题" />
-        <el-table-column prop="difficulty" label="难度" width="100" />
-      </el-table>
+    <el-table :data="pagedData" border style="width: 100%">
+      <el-table-column prop="id" label="题目ID" width="100" />
+      <el-table-column prop="title" label="题目标题" />
+      <el-table-column prop="difficulty" label="难度" width="100" />
+    </el-table>
 
-      <div class="pagination">
-        <el-pagination
-          background
-          layout="prev, pager, next"
-          :total="questions.length"
-          :page-size="pageSize"
-          v-model:current-page="currentPage"
-        />
-      </div>
-    </el-card>
-  </div>
+    <div class="pagination">
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :total="questions.length"
+        :page-size="pageSize"
+        v-model:current-page="currentPage"
+      />
+    </div>
+  </el-card>
 </template>
 
 <script setup lang="ts">

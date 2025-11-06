@@ -21,7 +21,7 @@
       </el-menu>
     </el-aside>
 
-    <!-- 主内容区 -->
+    <!-- 主体内容 -->
     <el-container>
       <el-header style="background: #f5f7fa; border-bottom: 1px solid #ddd">
         <h3>{{ pageTitle }}</h3>
@@ -39,9 +39,8 @@ import { computed } from 'vue'
 import { User, Edit } from '@element-plus/icons-vue'
 
 const route = useRoute()
-
 const activeMenu = computed(() => route.path)
-const pageTitle = computed(() => route.meta.title || '管理系统')
+const pageTitle = computed(() => route.meta.title || 'Quit 管理系统')
 </script>
 
 <style scoped>

@@ -37,4 +37,10 @@ const router = createRouter({
   routes,
 })
 
+// 动态修改页面标题
+router.beforeEach((to, _, next) => {
+  document.title = (to.meta.title as string) || 'Quit 管理系统'
+  next()
+})
+
 export default router
