@@ -14,8 +14,8 @@
 
       <el-table :data="pagedUsers" stripe border style="margin-top: 16px">
         <el-table-column prop="id" label="ID" width="60" />
-        <el-table-column prop="name" label="用户名" />
-        <el-table-column prop="role" label="角色" />
+        <el-table-column prop="username" label="用户名" />
+        <el-table-column prop="password" label="密码" />
       </el-table>
 
       <div class="pagination">
@@ -30,15 +30,25 @@
 
     <!-- 添加用户弹窗 -->
     <el-dialog title="添加用户" v-model="dialogVisible" width="400px">
-      <el-form>
+      <el-form label-width="100px">
         <el-form-item label="用户名">
-          <el-input placeholder="请输入用户名" />
+          <el-input v-model="form.username" placeholder="请输入用户名" />
         </el-form-item>
-        <el-form-item label="角色">
-          <el-select placeholder="选择角色">
-            <el-option label="管理员" value="admin" />
-            <el-option label="普通用户" value="user" />
-          </el-select>
+        <el-form-item label="密码">
+          <el-input
+            v-model="form.password"
+            type="password"
+            placeholder="请输入密码"
+            show-password
+          />
+        </el-form-item>
+        <el-form-item label="确认密码">
+          <el-input
+            v-model="form.confirmPassword"
+            type="password"
+            placeholder="请再次输入密码"
+            show-password
+          />
         </el-form-item>
       </el-form>
       <template #footer>
@@ -54,20 +64,26 @@ import { ref, computed } from 'vue'
 
 interface User {
   id: number
-  name: string
-  role: string
+  username: string
+  password: string
 }
 
 const users = ref<User[]>(
-  Array.from({ length: 25 }, (_, i) => ({
+  Array.from({ length: 53 }, (_, i) => ({
     id: i + 1,
-    name: `用户${i + 1}`,
-    role: i % 2 === 0 ? '管理员' : '普通用户',
+    username: `user_${i + 1}`,
+    password: '********',
   })),
 )
 
 const searchKeyword = ref('')
 const dialogVisible = ref(false)
+const form = ref({
+  username: '',
+  password: '',
+  confirmPassword: '',
+})
+
 const currentPage = ref(1)
 const pageSize = 10
 
