@@ -35,7 +35,7 @@ const questions = ref<Question[]>(
   Array.from({ length: 25 }, (_, i) => ({
     id: i + 1,
     title: `示例题目 ${i + 1}`,
-    difficulty: ['简单', '中等', '困难'][i % 3],
+    difficulty: ['简单', '中等', '困难'][i % 3] as string,
   })),
 )
 
