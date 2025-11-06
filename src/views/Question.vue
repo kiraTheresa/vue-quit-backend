@@ -83,7 +83,7 @@ const questions = ref<Question[]>(
     id: i + 1,
     content: `这是第 ${i + 1} 题的题干`,
     options: { A: '选项A', B: '选项B', C: '选项C', D: '选项D' },
-    answer: ['A', 'B', 'C', 'D'][i % 4],
+    answer: ['A', 'B', 'C', 'D'][i % 4] as string,
   })),
 )
 
